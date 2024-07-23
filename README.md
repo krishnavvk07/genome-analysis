@@ -12,14 +12,14 @@ Before installing necessary libraries, make sure to have `pip` and `conda` insta
 
 ### Miniconda:
 
-`mkdir -p ~/miniconda3`
-`wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh`
-`bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3`
+`mkdir -p ~/miniconda3` <br />
+`wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh` <br />
+`bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3`  <br />
 `rm -rf ~/miniconda3/miniconda.sh` <br />
 
 After installing, initialize Miniconda. The following commands initialize for bash or zsh shells:
 
-`~/miniconda3/bin/conda init bash`
+`~/miniconda3/bin/conda init bash`  <br />
 `~/miniconda3/bin/conda init zsh`  <br />
 
 Now, install the following packages:
