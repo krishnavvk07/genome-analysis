@@ -4,9 +4,9 @@ Analyzing the effect of the single nucleotide polymorphism (SNP) rs2248374 of th
 
 ## Installing necessary libraries
 
-`pip install biopython`
-`conda install bioconda::mafft`
-`pip install jupyterlab`
+`pip install biopython` <br />
+`conda install bioconda::mafft` <br />
+`pip install jupyterlab` <br />
 
 ## Aligning sequences
 
