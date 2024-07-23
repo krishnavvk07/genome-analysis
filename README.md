@@ -1,4 +1,4 @@
-# krishna-vadali-epedimiology-project
+# Genome analysis and interpretation project
 
 Analyzing the effect of the single nucleotide polymorphism (SNP) rs2248374 of the ERAP2 gene in offering selective immunity over the Black Death while simultaneously increase susceptibility to autoimmune disorders. Epedemiological research project for the Institute for Computing in Research
 
