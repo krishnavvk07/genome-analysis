@@ -20,9 +20,7 @@ sudo apt install python3-pip
 
 ### Download link:
 
-```
-[mafft-7.526-linux.tgz](https://mafft.cbrc.jp/alignment/software/mafft-7.526-linux.tgz) (64-bit only)
-```
+[mafft-7.526-linux.tgz](https://mafft.cbrc.jp/alignment/software/mafft-7.526-linux.tgz) 64-bit only
 
 ### Installation:
 
@@ -35,7 +33,6 @@ $ tar xfvz mafft-7.526-linux.tgz
 The `mafft-linux64` folder is generated, which has the `mafft.ba` script and the `mafftdir` subfolder.
 
 ```
-
 $ cd /somewhere/
 $ ls -F
 mafft-linux64/
