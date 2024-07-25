@@ -8,7 +8,7 @@ Before installing necessary libraries, make sure to have `pip` and `conda` insta
 
 ### Pip:
 
-`sudo apt install python3-pip` <br />
+```sudo apt install python3-pip```
 
 ### Miniconda:
 
