@@ -26,7 +26,7 @@ The file should be named `mafft-7.526-linux.tgz`.
 
 1. Open a terminal window and navigate to your home directory. Then,
 
-```
+```bash
 mv /directory_containing_downloads/mafft-7.526-linux.tgz .
 ```
 
@@ -34,13 +34,13 @@ mv /directory_containing_downloads/mafft-7.526-linux.tgz .
 
 1. Open a Terminal window.
 2. Untar the `.tgz` file to your home directory.
-```
+```bash
 cd
 tar xfvz mafft-7.526-linux.tgz
 ```
 The `mafft-linux64` folder is generated, which has the `mafft.ba` script and the `mafftdir` subfolder.
 
-```
+```bash
 cd mafft-linux64/
 ls -F
 mafft.bat*       mafftdir/
