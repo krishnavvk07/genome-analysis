@@ -8,7 +8,6 @@ Navigate to your home directory on the terminal `(home)$`
 
 ```
 cd
-
 ``` 
  
 ### Installing pip:
