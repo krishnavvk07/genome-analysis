@@ -69,6 +69,8 @@ The MAFFT tool allows us to align genomic data of nucleotides and amino acid seq
 
 ### Usage (through Jupyter notebook)
 
+Open a terminal and in the home directory, run:
+
 ```bash
 cd
 jupyter notebook sequence_aligning.ipynb
