@@ -18,9 +18,9 @@ sudo apt install python3-pip
 
 ## 2. Installing MAFFT (Multiple alignment program)	
 
-### Download link:
+### Download Mafft from their official website: [MAFFT](https://mafft.cbrc.jp/alignment/software/mafft-7.526-linux.tgz)(64-bit only)
 
-[mafft-7.526-linux.tgz](https://mafft.cbrc.jp/alignment/software/mafft-7.526-linux.tgz) 64-bit only
+The file should be named `mafft-7.526-linux.tgz`.
 
 ### Installation:
 
