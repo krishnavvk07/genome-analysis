@@ -2,14 +2,13 @@
 
 Analyzing the effect of the single nucleotide polymorphism (SNP) rs2549782 of the ERAP2 gene in offering selective immunity over the Black Death while simultaneously increase susceptibility to autoimmune disorders. Epedemiological research project for the Institute for Computing in Research
 
-## Installing libraries
+## 1. Installing relevant libraries
 
-Before installing necessary libraries, make sure to have `pip` and `conda` installed. To do so, run the following commands in a terminal window:
+Navigate to your home directory on the terminal `(home)$`.
+ 
+### Installing pip:
 
-### Pip:
-
-```sudo apt install python3-pip
-```
+```sudo apt install python3-pip```
 
 ### Miniconda:
 
