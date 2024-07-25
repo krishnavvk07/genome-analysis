@@ -50,9 +50,33 @@ mafft.bat*       mafftdir/
 ```
 If you want to move the installation to another location, just move the entire `mafft-linux64` folder (that contains both `mafft.bat` and `mafftdir`) to the new location. 
 
+## Cloning repository
+
+Clone the repository to be able to access all relevant files and run the program without further tweaks.
+
+In the home directory,
+
+```bash
+mkdir repos
+cd repos
+git init
+git clone https://codeberg.org/krishnavvk/krishna-vadali-epidemiology-project.git
+```
+
 ## Aligning sequences:
 
-The MAFFT tool allows us to align the ERAP2 genome's DNA sequence. 
+The MAFFT tool allows us to align genomic data of nucleotides and amino acid sequences. We will use it to align the ERAP2 gene's output.
+
+### Usage (through Jupyter notebook)
+
+```bash
+cd
+jupyter notebook sequence_aligning.ipynb
+```
+
+Follow instructions on the Jupyter notebook to align the erap2 genome sequence and create an outpute file with the aligned sequence.
+
+
 
 
 
