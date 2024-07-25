@@ -2,31 +2,29 @@
 
 Analyzing the effect of the single nucleotide polymorphism (SNP) rs2549782 of the ERAP2 gene in offering selective immunity over the Black Death while simultaneously increase susceptibility to autoimmune disorders. Epedemiological research project for the Institute for Computing in Research
 
-## Installing necessary libraries
+## Installing libraries
 
 Before installing necessary libraries, make sure to have `pip` and `conda` installed. To do so, run the following commands in a terminal window:
 
 ### Pip:
 
-```sudo apt install python3-pip```
+```sudo apt install python3-pip
+```
 
 ### Miniconda:
 
-`mkdir -p ~/miniconda3` <br />
-`wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh` <br />
-`bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3`  <br />
-`rm -rf ~/miniconda3/miniconda.sh` <br />
+```mkdir -p ~/miniconda3```
+```wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh```
+```~/miniconda3/miniconda.sh -b -u -p ~/miniconda3```
+```rm -rf ~/miniconda3/miniconda.sh```
 
 After installing, initialize Miniconda. The following commands initialize for bash or zsh shells:
 
-`~/miniconda3/bin/conda init bash`  <br />
-`~/miniconda3/bin/conda init zsh`  <br />
-
 Now, install the following packages:
 
-`pip install biopython` <br />
-`conda install bioconda::mafft` <br />
-`pip install jupyterlab` <br />
+`pip install biopython`
+`conda install bioconda::mafft`
+`pip install jupyterlab`
 
 ## Aligning sequences
 
