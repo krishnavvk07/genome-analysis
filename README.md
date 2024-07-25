@@ -27,17 +27,17 @@ The file should be named `mafft-7.526-linux.tgz`.
 1. Open a Terminal window.
 2. Untar the `.tgz` file in any folder you like.
 ```
-$ cd /somewhere/
-$ tar xfvz mafft-7.526-linux.tgz
+cd /somewhere/
+tar xfvz mafft-7.526-linux.tgz
 ```
 The `mafft-linux64` folder is generated, which has the `mafft.ba` script and the `mafftdir` subfolder.
 
 ```
-$ cd /somewhere/
-$ ls -F
+cd /somewhere/
+ls -F
 mafft-linux64/
-$ cd mafft-linux64/
-$ ls -F
+cd mafft-linux64/
+ls -F
 mafft.bat*       mafftdir/
 ```
 If you want to move the installation to another location, just move the entire `mafft-linux64` folder (that contains both `mafft.bat` and `mafftdir`) to the new location. 
