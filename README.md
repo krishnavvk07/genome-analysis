@@ -81,7 +81,7 @@ jupyter notebook sequence_aligning.ipynb
 
 Follow instructions on the Jupyter notebook to align the erap2 genome sequence and create an outpute file with the aligned sequence.
 
-** Through python script**
+**Through python script**
 
 ```bash
 cd
