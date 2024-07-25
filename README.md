@@ -4,28 +4,47 @@ Analyzing the effect of the single nucleotide polymorphism (SNP) rs2549782 of th
 
 ## 1. Installing relevant libraries
 
-Navigate to your home directory on the terminal `(home)$`
+Navigate to your home directory on the terminal `(home)~$`
 
 ```
 cd
 ``` 
- 
-### Installing pip:
 
-In the home directory `$`
+Next,
 
 ```
 sudo apt install python3-pip
 ```
 
-### Miniconda:
+## 2. Installing MAFFT (Multiple alignment program)	
 
-```mkdir -p ~/miniconda3```
-```wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh```
-```~/miniconda3/miniconda.sh -b -u -p ~/miniconda3```
-```rm -rf ~/miniconda3/miniconda.sh```
+### Download link:
 
-After installing, initialize Miniconda. The following commands initialize for bash or zsh shells:
+```
+[mafft-7.526-linux.tgz](https://mafft.cbrc.jp/alignment/software/mafft-7.526-linux.tgz) (64-bit only)
+```
+
+### Installation:
+
+1. Open a Terminal window.
+2. Untar the `.tgz` file in any folder you like.
+```
+$ cd /somewhere/
+$ tar xfvz mafft-7.526-linux.tgz
+```
+The `mafft-linux64` folder is generated, which has the `mafft.ba` script and the `mafftdir` subfolder.
+
+```
+
+$ cd /somewhere/
+$ ls -F
+mafft-linux64/
+$ cd mafft-linux64/
+$ ls -F
+mafft.bat*       mafftdir/
+```
+If you want to move the installation to another location, just move the entire `mafft-linux64` folder (that contains both `mafft.bat` and `mafftdir`) to the new location. 
+
 
 Now, install the following packages:
 
