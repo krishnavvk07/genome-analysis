@@ -73,6 +73,7 @@ Open a terminal and in the home directory, run:
 
 ```bash
 cd
+cd repos/krishna-vadali-epidemiology-project
 jupyter notebook sequence_aligning.ipynb
 ```
 
