@@ -67,7 +67,9 @@ git clone https://codeberg.org/krishnavvk/krishna-vadali-epidemiology-project.gi
 
 The MAFFT tool allows us to align genomic data of nucleotides and amino acid sequences. We will use it to align the ERAP2 gene's output.
 
-### Usage (through Jupyter notebook)
+### Usage of MAFFT tool
+
+**Through Jupyter notebook**
 
 Open a terminal and in the home directory, run:
 
@@ -78,6 +80,16 @@ jupyter notebook sequence_aligning.ipynb
 ```
 
 Follow instructions on the Jupyter notebook to align the erap2 genome sequence and create an outpute file with the aligned sequence.
+
+** Through python script**
+
+```bash
+cd
+cd repos/krishna-vadali-epidemiology-project/
+python3 sequence_aligning.py
+```
+
+This will create an outpute file by the name `erap2_gene_aligned.fasta` with the aligned ERAP2 sequence.
 
 
 
