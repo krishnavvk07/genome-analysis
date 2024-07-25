@@ -4,7 +4,12 @@ Analyzing the effect of the single nucleotide polymorphism (SNP) rs2549782 of th
 
 ## 1. Installing relevant libraries
 
-Navigate to your home directory on the terminal `(home)$`.
+Navigate to your home directory on the terminal `(home)$`
+
+```
+cd
+
+``` 
  
 ### Installing pip:
 
