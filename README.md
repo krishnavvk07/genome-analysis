@@ -12,7 +12,11 @@ cd
  
 ### Installing pip:
 
-```sudo apt install python3-pip```
+In the home directory `$`
+
+```
+sudo apt install python3-pip
+```
 
 ### Miniconda:
 
