@@ -11,7 +11,7 @@ def read_ods_to_dataframe(filtered_altered_allele):
     return df
 
 # Load data from an ODS file
-data = read_ods_to_dataframe('filtered_altered_allele.ods')
+data = read_ods_to_dataframe('raw-spreadsheets/allele_freq_lon_plot.ods')
 
 # Define positions and width of bars
 x = np.arange(len(data['site']))  # the positions on the x-axis
