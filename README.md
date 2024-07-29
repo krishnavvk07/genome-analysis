@@ -50,7 +50,7 @@ mafft.bat*       mafftdir/
 ```
 If you want to move the installation to another location, just move the entire `mafft-linux64` folder (that contains both `mafft.bat` and `mafftdir`) to the new location. 
 
-## Cloning repository
+## 3. Cloning repository
 
 Clone the repository to be able to access all relevant files and run the program without further tweaks.
 
@@ -63,11 +63,11 @@ git init
 git clone https://codeberg.org/krishnavvk/krishna-vadali-epidemiology-project.git
 ```
 
-## Aligning sequences:
+## 4. Aligning sequences:
 
 The MAFFT tool allows us to align genomic data of nucleotides and amino acid sequences. We will use it to align the ERAP2 gene's output.
 
-### Usage of MAFFT tool
+### 5.  Usage of MAFFT tool
 
 **Through Jupyter notebook**
 
@@ -91,6 +91,16 @@ python3 sequence_aligning.py
 
 This will create an outpute file by the name `erap2_gene_aligned.fasta` with the aligned ERAP2 sequence.
 
+## 6. Visualing snps vs allele frequencies
+
+To create and run a plot of snps vs allele frequencies before and after the Black Death in London, run the following:
+
+```bash
+cd /home/repos/krishna-vadali-epidemeology-project/
+python3 alt-allele-freq-vis.py
+```
+
+This should create a matplotlib plot of a list of relevant snps vs allele frequency.
 
 
 
