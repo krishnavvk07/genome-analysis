@@ -34,7 +34,7 @@ print(filtered_data.head(n=53))
 x = np.arange(len(filtered_data['snp']))  # the positions on the x-axis
 width = 0.2  # Width of the bars on the plot
 
-fig, ax = plt.subplots(figsize=(12, 8))
+fig, ax = plt.subplots(figsize=(15, 8))
 
 # Plot bars for each column
 bars1 = ax.bar(x - width, filtered_data['Lon_pre'], width, label='Lon_pre', color='cornflowerblue')
