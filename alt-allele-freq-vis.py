@@ -4,49 +4,54 @@ import numpy as np
 import matplotlib.pyplot as plt
 df = pd.DataFrame()
 
-
-# Function to read .ods file and return DataFrame
-def read_ods_to_dataframe(file_path):
+# Function to read specific rows from an ODS file
+def read_ods_from_header(file_path, sheet_name, header_row_index): 
     data = pyexcel_ods.get_data(file_path)
-    sheet_data = data[list(data.keys())[0]]  # Assumes the first sheet
-    df = pd.DataFrame(sheet_data[1:], columns=sheet_data[0])  # Assumes first row is header
+    sheet_data = data[sheet_name]  # Get data from the specified sheet
+
+    # Extract header and data
+    header = sheet_data[header_row_index]  # Header row
+    data_rows = sheet_data[header_row_index + 1:]  # Data rows after the header
+    
+    # Convert to DataFrame
+    df = pd.DataFrame(data_rows, columns=header)
     return df
 
-# Load data from the provided ODS file
-file_path = 'raw-spreadsheets/allele_freq_lon_plot.ods'
-data = read_ods_to_dataframe(file_path)
+file_path = 'dataset.ods'
+sheet_name = 'S4'
+header_row_index = 2  # 0-based index for the third header row
 
-# Print the first few rows of the original data
-print("Original Data:")
-print(data.head())
+data = read_ods_from_header(file_path, sheet_name, header_row_index)
+
+data.replace('', np.nan, inplace=True)
+data.replace('NA', np.nan, inplace=True)
 
 #Filter out cells with value 'NA'
-data = data.dropna(subset=['snp'])
+data = data.dropna(subset=['Site'])
 
-# Filter out rows where Lon_pre, Lon_dur, or Lon_post have values less than 0.4
-filtered_data = data[(data['Lon_pre'] >= 0.4) & (data['Lon_dur'] >= 0.4) & (data['Lon_post'] >= 0.4)]
+# Ensure the relevant columns are numeric for comparison
+data[['London_Pre_Alt', 'London_During_Alt', 'London_Post_Alt']] = data[['London_Pre_Alt', 'London_During_Alt', 'London_Post_Alt']].apply(pd.to_numeric, errors='coerce')
 
-# Print the first few rows of the filtered data
-print("Filtered Data:")
-print(filtered_data.head(n=53))
+# Remove rows where 'London_Pre_Alt' is higher than either 'London_During_Alt' or 'London_Post_Alt'
+data = data[~((data['London_Pre_Alt'] > data['London_During_Alt']) | (data['London_Pre_Alt'] > data['London_Post_Alt']))]
 
 # Define positions and width of bars
-x = np.arange(len(filtered_data['snp']))  # the positions on the x-axis
+x = np.arange(len(data['Site']))  # the positions on the x-axis
 width = 0.2  # Width of the bars on the plot
 
 fig, ax = plt.subplots(figsize=(15, 8))
 
 # Plot bars for each column
-bars1 = ax.bar(x - width, filtered_data['Lon_pre'], width, label='Lon_pre', color='cornflowerblue')
-bars2 = ax.bar(x, filtered_data['Lon_dur'], width, label='Lon_dur', color='brown')
-bars3 = ax.bar(x + width, filtered_data['Lon_post'], width, label='Lon_post', color='darkseagreen')
+bars1 = ax.bar(x - width, data['London_Pre_Alt'], width, label='Allele Freq Pre-BD', color='cornflowerblue')
+bars2 = ax.bar(x, data['London_During_Alt'], width, label='Allele Freq During-BD', color='brown')
+bars3 = ax.bar(x + width, data['London_Post_Alt'], width, label='Allele Freq Post-BD', color='darkseagreen')
 
 # Labeling and layout
 ax.set_xlabel('Snp')
 ax.set_ylabel('Allele Frequency')
 ax.set_title('Plot of Alternate Allele Frequency vs Snp')
 ax.set_xticks(x)
-ax.set_xticklabels(filtered_data['snp'], rotation=45, ha='right')
+ax.set_xticklabels(data['Site'], rotation=45, ha='right')
 ax.legend()
 
 # Show the plot
