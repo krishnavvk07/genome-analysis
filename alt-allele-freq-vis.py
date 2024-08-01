@@ -17,7 +17,7 @@ def read_ods_from_header(file_path, sheet_name, header_row_index):
     df = pd.DataFrame(data_rows, columns=header)
     return df
 
-file_path = 'dataset.ods'
+file_path = 'spreadsheets/fst-allele-data.ods'
 sheet_name = 'S4'
 header_row_index = 2  # 0-based index for the third header row
 
