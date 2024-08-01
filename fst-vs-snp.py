@@ -17,7 +17,7 @@ def read_ods_from_header(file_path, sheet_name, header_row_index):
     df = pd.DataFrame(data_rows, columns=header)
     return df
 
-file_path = 'dataset.ods'
+file_path = 'spreadsheets/fst-allele-data.ods'
 sheet_name = 'S4'
 header_row_index = 2  # 0-based index for the third header row
 
@@ -45,7 +45,7 @@ data = data[~((data['London_12_FST'] > data['London_23_FST']) | (data['London_12
 x = np.arange(len(data['Site']))  # the positions on the x-axis 
 width = 0.2  # Width of the bars on the plot
 
-fig, ax = plt.subplots(figsize=(15, 12, 9))
+fig, ax = plt.subplots(figsize=(12, 9))
 
 # Plot bars for each column
 bars1 = ax.bar(x - width, data['London_12_FST'], width, label='London_12_FST', color='cornflowerblue')
