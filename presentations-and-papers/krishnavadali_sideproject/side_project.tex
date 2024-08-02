@@ -1,0 +1,252 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage{hyperref}
+\usepackage[final]{listings}
+\usepackage{color}
+
+% Define colors for listings
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{An In-Depth Guide to ChemPy: Python's Chemistry Library}
+\author{}
+\date{}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents
+\end{frame}
+
+\section{Introduction to ChemPy}
+
+\begin{frame}
+    \frametitle{What is ChemPy?}
+    ChemPy is an open-source Python library for chemistry computations. It allows users to simulate chemical kinetics, equilibrium, and other processes using a flexible and intuitive interface. ChemPy is built on top of Numpy and Scipy, ensuring high performance and integration with other scientific libraries in Python.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Installation}
+    To install ChemPy, you can use pip:
+    \begin{lstlisting}[language=bash]
+pip install chempy
+    \end{lstlisting}
+\end{frame}
+
+\section{Core Components}
+
+\begin{frame}[fragile]
+    \frametitle{Chemical Reactions}
+    ChemPy provides tools to define and manipulate chemical reactions. You can represent reactions in a human-readable format and then use these representations to perform various calculations.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Defining a Simple Reaction}
+    \begin{lstlisting}[language=python]
+from chempy import Reaction
+
+# Define the reaction: 2 H2 + O2 -> 2 H2O
+reaction = Reaction.from_string("2 H2 + O2 -> 2 H2O")
+print(reaction)
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Equilibrium Calculations}
+    ChemPy can perform equilibrium calculations to find the concentrations of species at equilibrium for a given reaction.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Equilibrium Concentration}
+    \begin{lstlisting}[language=python]
+from chempy.equilibria import EqSystem
+from chempy.thermodynamics import GibbsEqConsts
+from chempy.util.units import to_unitless, default_units as u
+
+# Define the reactions and equilibrium constants
+reactions = [
+    Reaction.from_string("H2 + I2 -> 2 HI")
+]
+eq_consts = GibbsEqConsts([1e-2])
+
+# Create an equilibrium system
+eqsys = EqSystem(reactions, eq_consts)
+
+# Initial concentrations
+initial_concs = {'H2': 1 * u.molar, 'I2': 1 * u.molar, 'HI': 0 * u.molar}
+
+# Solve the equilibrium concentrations
+eq_concs = eqsys.root(initial_concs)
+print(to_unitless(eq_concs, u.molar))
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Kinetic Simulations}
+    ChemPy allows for the simulation of reaction kinetics using ordinary differential equations (ODEs). This is useful for studying the time evolution of reaction systems.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Reaction Kinetics}
+    \begin{lstlisting}[language=python]
+from chempy.kinetics.ode import get_odesys
+from chempy.kinetics.rates import ArrheniusParam
+from chempy.kinetics import ReactionRates
+
+# Define the reaction and rate
+reaction = Reaction.from_string("2 H2 + O2 -> 2 H2O")
+rate = ArrheniusParam(A=1e10, Ea=50e3)
+
+# Create the ODE system
+odesys = get_odesys([reaction], [rate])
+
+# Initial concentrations and time points
+initial_concs = {'H2': 2.0, 'O2': 1.0, 'H2O': 0.0}
+time_points = [0, 1, 2, 3, 4, 5]
+
+# Solve the ODEs
+result = odesys.integrate(time_points, initial_concs)
+print(result)
+    \end{lstlisting}
+\end{frame}
+
+\section{Advanced Features}
+
+\begin{frame}
+    \frametitle{Thermodynamics}
+    ChemPy includes tools for thermodynamic calculations, such as Gibbs free energy, enthalpy, and entropy changes for reactions.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Gibbs Free Energy}
+    \begin{lstlisting}[language=python]
+from chempy.thermodynamics import Gibbs
+
+# Define the reaction
+reaction = Reaction.from_string("2 H2 + O2 -> 2 H2O")
+
+# Gibbs free energy change
+dG = Gibbs([reaction])
+print(dG(298.15))  # at 298.15 K
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Electrochemistry}
+    ChemPy also provides functionality for electrochemical calculations, including cell potentials and Nernst equations.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Electrochemical Cell}
+    \begin{lstlisting}[language=python]
+from chempy.electrochemistry import ElectrochemicalCell
+from chempy.thermodynamics import nernst
+
+# Define half-cell reactions
+half_cells = [
+    Reaction.from_string("Zn -> Zn2+ + 2 e-"),
+    Reaction.from_string("Cu2+ + 2 e- -> Cu")
+]
+
+# Standard electrode potentials
+E0 = [0.76, 0.34]  # Zn/Zn2+ and Cu/Cu2+ standard potentials
+
+# Create the electrochemical cell
+cell = ElectrochemicalCell(half_cells, E0)
+
+# Nernst equation at standard conditions
+cell_potential = cell.potential(298.15)
+print(cell_potential)
+    \end{lstlisting}
+\end{frame}
+
+\section{Fun Examples}
+
+\begin{frame}[fragile]
+    \frametitle{Simple Reaction Kinetics}
+    Let's simulate the kinetics of the reaction between hydrogen and oxygen to form water:
+    \begin{lstlisting}[language=python]
+# Already defined earlier
+time_points = [0, 1, 2, 3, 4, 5]
+result = odesys.integrate(time_points, initial_concs)
+
+# Plot the results (requires matplotlib)
+import matplotlib.pyplot as plt
+
+plt.plot(result.tout, result.yout[:, 0], label='[H2]')
+plt.plot(result.tout, result.yout[:, 1], label='[O2]')
+plt.plot(result.tout, result.yout[:, 2], label='[H2O]')
+plt.xlabel('Time [s]')
+plt.ylabel('Concentration [M]')
+plt.legend()
+plt.show()
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Buffer Solutions}
+    Let's simulate the pH of a buffer solution made of acetic acid and sodium acetate:
+    \begin{lstlisting}[language=python]
+from chempy.kinetics.ode import integrate_ode
+from chempy.kinetics.rates import MassAction
+from chempy.equilibria import EqSystem
+
+# Define the buffer reaction: CH3COOH <=> CH3COO- + H+
+buffer_reaction = Reaction.from_string("CH3COOH <=> CH3COO- + H+")
+buffer_eq_const = 1.8e-5  # Acetic acid dissociation constant
+
+# Create equilibrium system
+buffer_eqsys = EqSystem([buffer_reaction], [buffer_eq_const])
+
+# Initial concentrations
+initial_concs = {'CH3COOH': 0.1, 'CH3COO-': 0.1, 'H+': 1e-7}
+
+# Solve the equilibrium concentrations
+buffer_eq_concs = buffer_eqsys.root(initial_concs)
+print(buffer_eq_concs)
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Electrochemical Cell Simulation}
+    Simulate the potential of a Daniell cell (Zn/Cu):
+    \begin{lstlisting}[language=python]
+# Already defined earlier
+cell_potential = cell.potential(298.15)
+print(f"Cell potential at 298.15 K: {cell_potential} V")
+    \end{lstlisting}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}
+    \frametitle{Conclusion}
+    ChemPy is a versatile library for chemistry-related computations in Python. From simple reaction kinetics to complex electrochemical simulations, ChemPy provides a comprehensive toolkit for chemists and educators. By integrating with other scientific libraries in Python, it offers high performance and flexibility for a wide range of applications.
+\end{frame}
+
+\end{document}
